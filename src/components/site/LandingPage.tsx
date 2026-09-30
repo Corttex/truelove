@@ -1727,7 +1727,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenApp, onOpenOwner
             gridTemplateColumns: 'minmax(240px, 1fr) 2fr',
             gap: '24px',
             alignItems: 'center',
-            boxShadow: '0 8px 24px -4px rgba(0,0,0,0.06)'
+            
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(165, 58, 95, 0.12)', display: 'grid', placeItems: 'center', color: 'var(--tl-brand-600)' }}>
