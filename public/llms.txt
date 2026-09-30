@@ -1,0 +1,40 @@
+# True Love APP Oficial
+
+> Plataforma comercial de relacionamentos intencionais para o público maduro (35+ anos) no Brasil, integrando Site Institucional, Admin MASTER, Painel do Dono (CRM e Funil de Vendas), Aplicativo iOS (Apple), Aplicativo Android (Google), Motor Autônomo de Agentes de IA com Webhooks Meta (WhatsApp e Instagram) e Orquestração n8n autohospedada em VPS.
+
+Este arquivo `llms.txt` fornece contexto estruturado, links essenciais, endpoints e especificações de arquitetura para modelos de linguagem (LLMs), agentes e sistemas automatizados que analisam este repositório.
+
+## Superfícies do Ecossistema e Rotas de Acesso
+
+- [/](http://localhost:3000/): Site Institucional e Landing Page de alta conversão para solteiros 35+, com apresentação de planos, garantias de privacidade e funis de cadastro.
+- [/adminmaster](http://localhost:3000/adminmaster): Painel de Governança Super Admin Master com controle de permissões de equipe (RBAC), cofre de chaves de APIs e tokens (Meta, OpenAI, Anthropic, Gemini, Postgres), monitoramento em tempo real da VPS e contêineres Docker, moderação de denúncias, calibração dos pesos de matching e trilha de auditoria LGPD.
+- [/painel](http://localhost:3000/painel): Painel do Dono com CRM 360°, filtros multicritério de clientes, automação de funil em 7 etapas (Kanban visual), auditoria KYC de documentos 35+, cockpit financeiro com métricas de MRR/ARR/LTV, mapa de calor de densidade de matching e Cockpit dos Agentes de IA com simulador inbound em tempo real.
+- [/api](http://localhost:3000/api): Portal interativo de APIs e Webhooks (api.dominio) para documentação de endpoints da Meta, healthcheck, injeção de leads e chamadas em cURL, JavaScript Fetch e Python Requests.
+- [/ios](http://localhost:3000/ios): Simulador realista do iPhone 16 Pro com Apple Human Interface Guidelines, Dynamic Island, cards de afinidade explicável e chat seguro com reciprocidade estrita.
+- [/android](http://localhost:3000/android): Simulador realista do Google Pixel 9 Pro com Material Design 3 (Material You), Top Bar, Bottom Navigation, FAB com elevação e comando de exportação nativa via Capacitor Android.
+- [/automacoes](http://localhost:3000/automacoes): Central de automações comparando n8n Self-Hosted (Custo Zero de licença) vs Hermes Server, com link direto para o painel n8n na porta 5678 e 4 workflows de funil ativos.
+
+## Motor de Agentes de IA
+
+1. **Sofia (Triagem Meta 24/7):** Processa mensagens recebidas via WhatsApp Cloud API e Instagram Direct, extrai idade, cidade e intenção, valida a regra de maturidade 35+ e insere o lead no funil do CRM com resposta autônoma no tom do clube.
+2. **Arthur (Auditor KYC 35+):** Valida consistência de documentos (CNH/RG) e fotos, detectando fraudes e perfis fakes antes da aprovação do Dono.
+3. **Eros (Cupido Noturno):** Rotina noturna na VPS às 22:00 cruzando afinidade ponderada (Jaccard) por cidade, interesses e valores mútuos. Dispara recomendações quando afinidade >= 80%.
+4. **Clara (Guardiã Anti-Churn):** Identifica matches parados há mais de 48h ou usuários inativos há 5 dias e sugere assuntos e perguntas quebra-gelo personalizadas.
+5. **Lorenzo (Consultor Concierge VIP):** Detecta usuários com perfil de alta exigência e apresenta os benefícios da curadoria humana do plano Concierge VIP de R$ 349/mês.
+
+## Arquitetura de Produção e VPS
+
+- **PostgreSQL 16:** Banco de dados relacional com esquema estrito em `database/schema.sql`, suporte a verificação 35+ e índices otimizados para matching.
+- **Node.js 20 ESM (Porta 4000):** Servidor backend dos agentes de IA em `backend/server.js`, com suporte aos Webhooks oficiais da Meta (`/v1/meta/webhook`).
+- **Nginx Alpine (Portas 80 e 443):** Servidor web com compressão gzip, segurança de cabeçalhos HTTP, roteamento SPA e proxy reverso para APIs.
+- **n8n Community Edition (Porta 5678):** Orquestrador de fluxos visuais autohospedado com custo zero de licença, integrado ao Postgres.
+- **Deploy Automático:** Script bash de instalação em 1 clique em `deploy/vps-deploy.sh` e guia detalhado em `deploy/vps-setup.md`.
+
+## Documentação Técnica do Repositório
+
+- [Registro Geral da V1.0](V1_REGISTRO_SISTEMA.md): Especificação completa da versão 1.0, regras de negócio e contratos de sistema.
+- [Guia de Deploy em VPS](deploy/vps-setup.md): Instruções passo a passo para configuração de servidor Linux, Docker e SSL Let's Encrypt.
+- [Script de Deploy em VPS](deploy/vps-deploy.sh): Script executável em bash para instalação automatizada de dependências e contêineres.
+- [Design Tokens e Diretrizes](MDs%20ref/DESIGN.md): Padrões de cores, tipografia editorial, acessibilidade 35+ e espaçamentos.
+- [Regras de Negócio e Algoritmo](MDs%20ref/SKILL.md): Especificação dos filtros de afinidade Jaccard ponderada e reciprocidade estrita.
+- [Esquema do Banco de Dados](database/schema.sql): Script SQL completo para PostgreSQL e Supabase.

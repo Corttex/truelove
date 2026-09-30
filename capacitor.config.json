@@ -1,0 +1,12 @@
+{
+  "appId": "br.com.truelove.app",
+  "appName": "True Love",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "ios": {
+    "scheme": "True Love",
+    "allowsLinkPreview": false,
+    "handleApplicationURL": true,
+    "contentInset": "always"
+  }
+}

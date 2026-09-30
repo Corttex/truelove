@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  # 1. Banco de Dados Relacional PostgreSQL (com extensões para matching e auditoria)
+  postgres:
+    image: postgres:16-alpine
+    container_name: truelove_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-truelove_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-SecurePassword2026!}
+      POSTGRES_DB: ${POSTGRES_DB:-truelove_prod}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - truelove_net
+
+  # 2. Cache em Memória & Buffer de Sessões Redis (Conforme Arquitetura de IA)
+  redis:
+    image: redis:7-alpine
+    container_name: truelove_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - truelove_net
+
+  # 3. Motor de Agentes de IA & Webhook Meta (WhatsApp e Instagram 24/7)
+  agent_engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    container_name: truelove_agent_engine
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: postgres://${POSTGRES_USER:-truelove_admin}:${POSTGRES_PASSWORD:-SecurePassword2026!}@postgres:5432/${POSTGRES_DB:-truelove_prod}
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-truelove_jwt_access_secret_production_key_2026}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-truelove_jwt_refresh_secret_production_key_2026}
+      JWT_KEY_VERSION: v1
+      META_VERIFY_TOKEN: ${META_VERIFY_TOKEN:-truelove_meta_token_secure_2026}
+      META_ACCESS_TOKEN: ${META_ACCESS_TOKEN:-EAA...}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-sk-...}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-sk-ant-...}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-AIza...}
+      LANGFUSE_HOST: ${LANGFUSE_HOST:-http://langfuse:3000}
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "4000:4000"
+    networks:
+      - truelove_net
+
+  # 3. Frontend Web, PWA e Painel do Dono
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: truelove_web
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - agent_engine
+    networks:
+      - truelove_net
+
+  # 4. Gestor Visual de Automações n8n (Community Edition - 100% Gratuito / Custo Zero)
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: truelove_n8n
+    restart: always
+    environment:
+      - N8N_PORT=5678
+      - NODE_ENV=production
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB:-truelove_prod}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER:-truelove_admin}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD:-SecurePassword2026!}
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - postgres
+    networks:
+      - truelove_net
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  n8n_data:
+    driver: local
+
+networks:
+  truelove_net:
+    driver: bridge

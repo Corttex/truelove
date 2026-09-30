@@ -1,0 +1,688 @@
+/* ==========================================================================
+   True Love APP Oficial — Design Tokens, Dark/Light Themes & 35+ Accessibility
+   ========================================================================== */
+
+:root {
+  /* Brand Palettes (Logo Colors) */
+  --tl-brand-900: #4a1024;
+  --tl-brand-800: #671834;
+  --tl-brand-700: #85254b;
+  --tl-brand-600: #a53a5f;
+  --tl-brand-500: #b96276;
+  --tl-brand-100: #fbe6ec;
+  --tl-brand-50:  #fdf2f5;
+
+  /* Romantic & Warm Accents */
+  --tl-gold-500:  #b27c44;
+  --tl-gold-400:  #c8935b;
+  --tl-gold-100:  #fbf3eb;
+  
+  --tl-rose-600:  #af495a;
+  --tl-rose-500:  #c75e70;
+  --tl-rose-100:  #f9ebee;
+  --tl-rose-50:   #fdf6f7;
+
+  /* Light Theme Variables */
+  --bg-primary:   #f8faf9;
+  --bg-secondary: #f0f4f2;
+  --bg-surface:   #ffffff;
+  --bg-card:      #ffffff;
+  --bg-subtle:    #f5f8f7;
+  --text-primary: #142320;
+  --text-secondary: #485c59;
+  --text-muted:   #5b6f6c;
+  --border-color: #dce5e2;
+  --border-hover: #b4c7c2;
+  --card-shadow:  0 4px 16px rgba(16, 45, 42, 0.06);
+  --card-hover-shadow: 0 10px 24px rgba(16, 45, 42, 0.10);
+  
+  /* Semantic Statuses */
+  --status-success: #1b8a5a;
+  --status-success-bg: #e6f7ef;
+  --status-warning: #b07817;
+  --status-warning-bg: #fff8e6;
+  --status-danger:  #c3303e;
+  --status-danger-bg: #fdebed;
+  --status-info:    #2a6bb5;
+  --status-info-bg:   #eaf2fc;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-accent: 'Cinzel', serif;
+
+  /* Base Sizes (Scalable for 35+) */
+  --base-font-size: 15px;
+  --line-height-base: 1.55;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Dark Theme (Luxurious Deep Burgundy / Obsidian)
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg-primary:   #0f0508;
+  --bg-secondary: #17070c;
+  --bg-surface:   #1f0a11;
+  --bg-card:      #260d15;
+  --bg-subtle:    #2d0f19;
+  --text-primary: #fdf5f7;
+  --text-secondary: #e8d5da;
+  --text-muted:   #cbaeb6;
+  --border-color: #3b1723;
+  --border-hover: #4f2131;
+  --card-shadow:  0 8px 32px rgba(0, 0, 0, 0.5);
+  --card-hover-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+
+  --tl-brand-900: #fbe6ec;
+  --tl-brand-800: #e2aab9;
+  --tl-brand-700: #b96276;
+  --tl-brand-600: #a53a5f;
+  --tl-brand-500: #85254b;
+  --tl-brand-100: #3b0c1c;
+  --tl-brand-50:  #240510;
+
+  --tl-gold-500:  #df9f5e;
+  --tl-gold-400:  #f0be88;
+  --tl-gold-100:  #332414;
+
+  --tl-rose-600:  #d9687b;
+  --tl-rose-500:  #ea8293;
+  --tl-rose-100:  #38181f;
+  --tl-rose-50:   #2b1319;
+
+  --status-success: #3dd692;
+  --status-success-bg: rgba(27, 138, 90, 0.22);
+  --status-warning: #f0ab35;
+  --status-warning-bg: rgba(176, 120, 23, 0.22);
+  --status-danger:  #f05d6b;
+  --status-danger-bg: rgba(195, 48, 62, 0.22);
+  --status-info:    #5ba2f4;
+  --status-info-bg:   rgba(42, 107, 181, 0.22);
+}
+
+/* 35+ Large Font Mode for Comfort Reading */
+[data-font-size="large"] {
+  --base-font-size: 17px;
+  --line-height-base: 1.65;
+}
+
+[data-font-size="xlarge"] {
+  --base-font-size: 19px;
+  --line-height-base: 1.75;
+}
+
+/* Base Reset & Transitions */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--base-font-size);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-fast);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* App Shell Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+}
+
+/* Global Ecosystem Switcher Bar */
+.ecosystem-bar {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  color: #2a0815;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ecosystem-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ecosystem-logo-badge {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ecosystem-title-wrap {
+  line-height: 1.2;
+}
+
+.ecosystem-title-wrap strong {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  display: block;
+}
+
+.ecosystem-title-wrap small {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ecosystem-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ecosystem-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  transition: all var(--transition-fast);
+}
+
+.ecosystem-nav-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ecosystem-nav-btn.active {
+  background: #ffffff;
+  color: #0f3936;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.ecosystem-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.font-size-btn {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.font-size-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.owner-badge {
+  background: rgba(178, 124, 68, 0.28);
+  border: 1px solid var(--tl-gold-400);
+  color: #ffd8ae;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Card Styling (Glassmorphism) */
+.card-box {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  color: var(--text-primary);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal), background var(--transition-normal);
+}
+
+.card-box:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+}
+
+[data-theme="dark"] .card-box {
+  background: #240d16;
+  border: 1px solid rgba(225, 29, 72, 0.22);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .card-box:hover {
+  background: #2b101b;
+  border-color: rgba(225, 29, 72, 0.4);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--tl-brand-600) 0%, var(--tl-brand-500) 100%);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(165, 58, 95, 0.35);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(165, 58, 95, 0.45);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  /* Renamed visually to a Rose/Brand premium button */
+  background: linear-gradient(135deg, #c75e70 0%, #af495a 100%);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(199, 94, 112, 0.35);
+  transition: all var(--transition-fast);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-gold:hover {
+  filter: brightness(1.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(199, 94, 112, 0.45);
+}
+
+.btn-danger {
+  background: var(--status-danger);
+  color: #ffffff;
+  padding: 9px 15px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-danger:hover {
+  filter: brightness(1.1);
+}
+
+/* Badges & Tags */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-verified {
+  background: var(--status-success-bg);
+  color: var(--status-success);
+  border: 1px solid var(--status-success);
+}
+
+.badge-pending {
+  background: var(--status-warning-bg);
+  color: var(--status-warning);
+  border: 1px solid var(--status-warning);
+}
+
+.badge-rejected {
+  background: var(--status-danger-bg);
+  color: var(--status-danger);
+  border: 1px solid var(--status-danger);
+}
+
+.badge-tier-free {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.badge-tier-plus {
+  background: var(--tl-brand-100);
+  color: var(--tl-brand-700);
+  border: 1px solid var(--tl-brand-500);
+}
+
+.badge-tier-concierge {
+  background: var(--tl-gold-100);
+  color: var(--tl-gold-400);
+  border: 1px solid var(--tl-gold-400);
+  font-weight: 700;
+}
+
+/* Form Inputs */
+.form-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--tl-brand-600);
+  box-shadow: 0 0 0 3px rgba(20, 83, 79, 0.2);
+}
+
+/* Kanban / Funnel Columns */
+.kanban-board {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 12px 4px 24px;
+  min-height: 580px;
+}
+
+.kanban-column {
+  flex: 0 0 310px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  max-height: 78vh;
+}
+
+.kanban-column-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.kanban-counter {
+  background: var(--bg-surface);
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  color: var(--tl-brand-700);
+  border: 1px solid var(--border-color);
+}
+
+.kanban-cards-wrap {
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.kanban-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  padding: 14px;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.kanban-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--tl-brand-500);
+}
+
+/* iPhone Pro Device Frame for App iOS */
+.iphone-frame {
+  width: 384px;
+  height: 790px;
+  background: #000000;
+  border-radius: 54px;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6), 0 0 0 12px #26292b, 0 0 0 14px #4f5357;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+}
+
+.dynamic-island {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 118px;
+  height: 32px;
+  background: #000000;
+  border-radius: 20px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.iphone-screen {
+  flex: 1;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: 48px;
+  position: relative;
+}
+
+.ios-tab-bar {
+  height: 64px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 12px;
+}
+
+.ios-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.ios-tab-btn.active {
+  color: var(--tl-brand-700);
+  font-weight: 700;
+}
+
+/* Toast Notifications */
+.tl-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #103a36;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 9999;
+}
+
+
+/* ==========================================================================
+   Custom Luxury Scrollbar (Brand Burgundy / Glassmorphism)
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a53a5f 0%, #671834 100%);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-primary);
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c75e70 0%, #85254b 100%);
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #85254b var(--bg-primary);
+}
